@@ -119,7 +119,8 @@ For more depth logs you can use `journalctl --user -xeu ps3rpd`
 	- If you want to use a .exe, [here](https://www.mediafire.com/file/ezzlcemhkmnmyn2/PS3RPD.exe/file) is a version that may or may not fully function (very little bug testing has been done)
 
 ## Contact Me
-Contact me via Discord: `zorua98741`/`zorua98741#0023`.
+Contact zorua via Discord: `zorua98741`/`zorua98741#0023`.
+Contact me via Discord: `doubl99`/`exigeboi`.
 
 ## Additional Information
 
