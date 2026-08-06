@@ -36,7 +36,7 @@ Display what game you are playing on PS3 via your PC!
 * PS3 and PC on the same network/internet connection
 * Discord installed and open on the PC running the script
 * Administrator permissions on the PC
-* A Python 3.9 interpreter installed on the PC if you do not wish to use the executable file
+* A Python 3.9 interpreter installed on the PC
 
 ### Windows
 * [version 1.9.7 .py](https://github.com/user-attachments/files/30801073/PS3RPD.py)
@@ -46,7 +46,7 @@ Download [NSSM](https://nssm.cc/release/nssm-2.24.zip) and run `nssm install <se
 WARNING: PS3RPD.exe must be in a location that won't change ie. C:\ps3rpd\PS3RPD.exe
 
 > [!NOTE]
-> The file will very likely be flagged as a virus on your computer
+> The file will very likely be flagged as a virus on your computer.
 > As far as I know, there is nothing I can do to fix this and I have no idea why it happens.
 
 ### Linux 
