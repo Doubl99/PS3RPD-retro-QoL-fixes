@@ -179,6 +179,7 @@ class PrepWork:  # Python2 class should be "class PrepWork(object):" ?
 class GatherDetails:
     def __init__(self):
         self.soup = None
+        self.rawhtml = None
         self.thermalData = None
         self.name = None
         self.titleID = None
@@ -211,7 +212,11 @@ class GatherDetails:
 
         try:
             response = requests.get(url, headers=headers)
+
+            self.raw_html = response.text
+
             self.soup = BeautifulSoup(response.text, "html.parser")
+
             return True
         except ConnectionError as e:
             print(f'get_html():  webman not found. "{e}".')
@@ -251,7 +256,7 @@ class GatherDetails:
             self.get_retro_details()
         else:
             print("decide_game_type():  XMB")
-            self.name = "XMB"
+            self.name = "PS3 Home Menu"
             self.image = "xmb"
             self.titleID = None  # even though not used needs to be reset so prev titleID is not shown when on XMB
 
@@ -284,39 +289,40 @@ class GatherDetails:
         if prevTitle != titleID:  # only get new image if a new game is found
             self.get_PS3_image()
 
-    def get_retro_details(
-        self,
-    ):  # only tested with PSX and PS2 games, PSP and retroarch game compatibility unknown
-        name = "PlayStation 1/2"  # if a PSX or PS2 game is not detected, or extern variable is False, this default will be used
+    def get_retro_details(self):
+        name = "PlayStation 1/2"
+
         if prepWork.config["retro_covers"]:
-            # name detected is based on name of file
-            if (
-                self.soup.find(
-                    "a", href=re.compile("/(dev_hdd0|dev_usb00[0-9])/PSXISO")
-                )
-                is not None
-            ):  # only PSX
-                name = self.soup.find(
-                    "a", href=re.compile("/(dev_hdd0|dev_usb00[0-9])/PSXISO")
-                ).find_next_sibling()
-            elif (
-                self.soup.find(
-                    "a", href=re.compile("/(dev_hdd0|dev_usb00[0-9])/PS2ISO")
-                )
-                is not None
-            ):  # only PS2
-                name = self.soup.find(
-                    "a", href=re.compile("/(dev_hdd0|dev_usb00[0-9])/PS2ISO")
-                ).find_next_sibling()
-                # ! can set a boolean here if need to know a PS2 game is mounted !
-            try:
-                name = re.search('">(.*)</a>', str(name)).group(1)
-            except AttributeError as e:
-                print(f'! get_retro_details(): error with regex "{e}" !')
+            # Check raw HTML directly for the active mount points
+            psx_match = re.search(
+                r'href="/mount\.ps3/dev_hdd0/PSXISO/[^"]+">([^<]+)</a>',
+                self.raw_html
+            )
+            ps2_match = re.search(
+                r'href="/mount\.ps3/dev_hdd0/PS2ISO/[^"]+">([^<]+)</a>',
+                self.raw_html
+            )
+
+            if psx_match:
+                raw_name = psx_match.group(1).strip()
+                for ext in [".cue", ".iso", ".bin"]:
+                    if raw_name.lower().endswith(ext):
+                        raw_name = raw_name[:-len(ext)]
+                        break
+                name = raw_name
+
+            elif ps2_match:
+                raw_name = ps2_match.group(1).strip()
+                for ext in [".iso", ".bin", ".mdf"]:
+                    if raw_name.lower().endswith(ext):
+                        raw_name = raw_name[:-len(ext)]
+                        break
+                name = raw_name
+
+
         self.name = name
         print(f"get_retro_details(): {name}")
         self.get_retro_image()
-
     def get_PS3_image(
         self,
     ):  # allow user to prefer using only discord dev app, otherwise try external psimg.db file, followed by try gametdb
@@ -442,11 +448,13 @@ while True:
             prepWork.connect_to_discord()
             timer = time()
             closed = False
-        if prepWork.config["show_temp"]:  # first character of variable in lowercase
+        if prepWork.config["show_temp"] and not gatherDetails.isRetroGame:
             gatherDetails.get_thermals()
             gatherDetails.thermalData = gatherDetails.thermalData.replace(
                 "Â", ""
-            )  # ! bandaid fix ! ANSI encoding is being used on some users??
+            )
+        else:
+            gatherDetails.thermalData = None  # Clears thermal string for retro games  # ! bandaid fix ! ANSI encoding is being used on some users??
         gatherDetails.decide_game_type()
         # print(f'{gatherDetails.name}, {gatherDetails.thermalData}, {gatherDetails.image}, {gatherDetails.titleID}')   # debugging
         gatherDetails.name = gatherDetails.name.replace(
