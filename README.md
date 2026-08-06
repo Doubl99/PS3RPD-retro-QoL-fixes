@@ -39,9 +39,7 @@ Display what game you are playing on PS3 via your PC!
 * A Python 3.9 interpreter installed on the PC if you do not wish to use the executable file
 
 ### Windows
-* [version 1.9.7 .exe](https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/releases/download/v1.9.7/PS3RPD.exe)
-or
-* [version 1.9.7 .py](https://github.com/doubl99/PS3RPD-retro-QoL-fixes/download/PS3RPD.py)
+* [version 1.9.7 .py](https://github.com/user-attachments/files/30801073/PS3RPD.py)
 
 #### Installing as a Windows service (optional)
 Download [NSSM](https://nssm.cc/release/nssm-2.24.zip) and run `nssm install <service name ie. ps3rpd>` to install PS3RPD as a Windows service.
