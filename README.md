@@ -21,9 +21,17 @@ Display what game you are playing on PS3 via your PC!
 		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/ps32025.png?raw=true"></td>
 	</tr>
 	<tr>
-		<td>PS1/2</td>
+		<td>Retro Holder</td>
 		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/retro.png?raw=true"> </td>
 		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/retro2025.png?raw=true"></td>
+	</tr>
+	<tr>
+		<td>PS2</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>PS1</td>
+		<td></td>
 	</tr>
 </table>
 
