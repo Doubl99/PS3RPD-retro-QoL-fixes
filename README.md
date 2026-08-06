@@ -14,11 +14,13 @@ Display what game you are playing on PS3 via your PC!
 		<td>XMB</td>
 		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/xmb.png?raw=true"> </td>
 		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/xmb2025.png?raw=true"></td>
+		<td> <img src="https://github.com/Doubl99/PS3RPD-retro-QoL-fixes/blob/main/img/xmb2026.png?raw=true"></td>
 	</tr>
 	<tr>
 		<td>PS3</td>
 		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/ps3.png?raw=true"> </td>
 		<td> <img src="https://github.com/zorua98741/PS3-Rich-Presence-for-Discord/blob/main/img/ps32025.png?raw=true"></td>
+		<td> <img src="https://github.com/Doubl99/PS3RPD-retro-QoL-fixes/blob/main/img/ps32026.png?raw=true"></td>
 	</tr>
 	<tr>
 		<td>Retro Holder</td>
@@ -28,10 +30,12 @@ Display what game you are playing on PS3 via your PC!
 	<tr>
 		<td>PS2</td>
 		<td></td>
+		<td> <img src="https://github.com/Doubl99/PS3RPD-retro-QoL-fixes/blob/main/img/ps22026.png?raw=true"> </td>
 	</tr>
 	<tr>
 		<td>PS1</td>
 		<td></td>
+		<td> <img src="https://github.com/Doubl99/PS3RPD-retro-QoL-fixes/blob/main/img/ps12026.png?raw=true"> </td>
 	</tr>
 </table>
 
