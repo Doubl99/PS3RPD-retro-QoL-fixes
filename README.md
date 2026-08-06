@@ -46,8 +46,8 @@ Download [NSSM](https://nssm.cc/release/nssm-2.24.zip) and run `nssm install <se
 WARNING: PS3RPD.exe must be in a location that won't change ie. C:\ps3rpd\PS3RPD.exe
 
 > [!NOTE]
-> The executable file will very likely be flagged as a virus on your computer due to `pyinstaller` being used to compile it.
-> As far as I know, there is nothing I can do to fix this.
+> The file will very likely be flagged as a virus on your computer
+> As far as I know, there is nothing I can do to fix this and I have no idea why it happens.
 
 ### Linux 
 
